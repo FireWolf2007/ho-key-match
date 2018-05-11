@@ -36,8 +36,10 @@ describe('Game e2e test', () => {
         expect(gameUpdatePage.getGoalsTeam1Input()).toMatch('5');
         gameUpdatePage.setGoalsTeam2Input('5');
         expect(gameUpdatePage.getGoalsTeam2Input()).toMatch('5');
-        gameUpdatePage.setResultInput('5');
-        expect(gameUpdatePage.getResultInput()).toMatch('5');
+        gameUpdatePage.setResultTeam1Input('5');
+        expect(gameUpdatePage.getResultTeam1Input()).toMatch('5');
+        gameUpdatePage.setResultTeam2Input('5');
+        expect(gameUpdatePage.getResultTeam2Input()).toMatch('5');
         gameUpdatePage.team1SelectLastOption();
         gameUpdatePage.team2SelectLastOption();
         gameUpdatePage.save();

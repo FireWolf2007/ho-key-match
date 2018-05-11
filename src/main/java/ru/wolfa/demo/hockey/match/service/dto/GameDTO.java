@@ -24,7 +24,11 @@ public class GameDTO implements Serializable {
 
     @Min(value = 0)
     @Max(value = 3)
-    private Integer result;
+    private Integer resultTeam1;
+
+    @Min(value = 0)
+    @Max(value = 3)
+    private Integer resultTeam2;
 
     private Long team1Id;
 
@@ -66,12 +70,20 @@ public class GameDTO implements Serializable {
         this.goalsTeam2 = goalsTeam2;
     }
 
-    public Integer getResult() {
-        return result;
+    public Integer getResultTeam1() {
+        return resultTeam1;
     }
 
-    public void setResult(Integer result) {
-        this.result = result;
+    public void setResultTeam1(Integer resultTeam1) {
+        this.resultTeam1 = resultTeam1;
+    }
+
+    public Integer getResultTeam2() {
+        return resultTeam2;
+    }
+
+    public void setResultTeam2(Integer resultTeam2) {
+        this.resultTeam2 = resultTeam2;
     }
 
     public Long getTeam1Id() {
@@ -134,7 +146,8 @@ public class GameDTO implements Serializable {
             ", time='" + getTime() + "'" +
             ", goalsTeam1=" + getGoalsTeam1() +
             ", goalsTeam2=" + getGoalsTeam2() +
-            ", result=" + getResult() +
+            ", resultTeam1=" + getResultTeam1() +
+            ", resultTeam2=" + getResultTeam2() +
             ", team1=" + getTeam1Id() +
             ", team1='" + getTeam1Name() + "'" +
             ", team2=" + getTeam2Id() +

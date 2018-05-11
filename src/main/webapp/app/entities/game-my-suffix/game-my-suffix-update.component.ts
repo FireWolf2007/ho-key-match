@@ -19,9 +19,7 @@ export class GameMySuffixUpdateComponent implements OnInit {
     private _game: IGameMySuffix;
     isSaving: boolean;
 
-    team1s: ITeamMySuffix[];
-
-    team2s: ITeamMySuffix[];
+    teams: ITeamMySuffix[];
     time: string;
 
     constructor(
@@ -36,33 +34,9 @@ export class GameMySuffixUpdateComponent implements OnInit {
         this.route.data.subscribe(({ game }) => {
             this.game = game.body ? game.body : game;
         });
-        this.teamService.query({ filter: 'game-is-null' }).subscribe(
+        this.teamService.query().subscribe(
             (res: HttpResponse<ITeamMySuffix[]>) => {
-                if (!this.game.team1Id) {
-                    this.team1s = res.body;
-                } else {
-                    this.teamService.find(this.game.team1Id).subscribe(
-                        (subRes: HttpResponse<ITeamMySuffix>) => {
-                            this.team1s = [subRes.body].concat(res.body);
-                        },
-                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
-                    );
-                }
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.teamService.query({ filter: 'game-is-null' }).subscribe(
-            (res: HttpResponse<ITeamMySuffix[]>) => {
-                if (!this.game.team2Id) {
-                    this.team2s = res.body;
-                } else {
-                    this.teamService.find(this.game.team2Id).subscribe(
-                        (subRes: HttpResponse<ITeamMySuffix>) => {
-                            this.team2s = [subRes.body].concat(res.body);
-                        },
-                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
-                    );
-                }
+                this.teams = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

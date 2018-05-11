@@ -55,20 +55,39 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.result" for="field_result">Result</label>
-                    <input type="number" class="form-control" name="result" id="field_result"
-                        [(ngModel)]="game.result" min="0" max="3"/>
-                    <div [hidden]="!(editForm.controls.result?.dirty && editForm.controls.result?.invalid)">
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam1" for="field_resultTeam1">Result Team 1</label>
+                    <input type="number" class="form-control" name="resultTeam1" id="field_resultTeam1"
+                        [(ngModel)]="game.resultTeam1" min="0" max="3"/>
+                    <div [hidden]="!(editForm.controls.resultTeam1?.dirty && editForm.controls.resultTeam1?.invalid)">
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.result?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            [hidden]="!editForm.controls.resultTeam1?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
                             This field should be at least 0.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.result?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 3 }">
+                            [hidden]="!editForm.controls.resultTeam1?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 3 }">
                             This field cannot be more than 3.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.controls.result?.errors?.number" jhiTranslate="entity.validation.number">
+                            [hidden]="!editForm.controls.resultTeam1?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam2" for="field_resultTeam2">Result Team 2</label>
+                    <input type="number" class="form-control" name="resultTeam2" id="field_resultTeam2"
+                        [(ngModel)]="game.resultTeam2" min="0" max="3"/>
+                    <div [hidden]="!(editForm.controls.resultTeam2?.dirty && editForm.controls.resultTeam2?.invalid)">
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.resultTeam2?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.resultTeam2?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 3 }">
+                            This field cannot be more than 3.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.resultTeam2?.errors?.number" jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -76,9 +95,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.team1" for="field_team1">Team 1</label>
-                    <select class="form-control" id="field_team1" name="team1" [(ngModel)]="game.team1Id" required>
+                    <select class="form-control" id="field_team1" name="team1" [(ngModel)]="game.team1Id"  required>
                         <option *ngIf="!editForm.value.team1" [ngValue]="null" selected></option>
-                        <option [ngValue]="teamOption.id" *ngFor="let teamOption of team1s; trackBy: trackTeamById">{{teamOption.name}}</option>
+                        <option [ngValue]="teamOption.id" *ngFor="let teamOption of teams; trackBy: trackTeamById">{{teamOption.name}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.team1?.dirty && editForm.controls.team1?.invalid)">
@@ -89,9 +108,9 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.team2" for="field_team2">Team 2</label>
-                    <select class="form-control" id="field_team2" name="team2" [(ngModel)]="game.team2Id" required>
+                    <select class="form-control" id="field_team2" name="team2" [(ngModel)]="game.team2Id"  required>
                         <option *ngIf="!editForm.value.team2" [ngValue]="null" selected></option>
-                        <option [ngValue]="teamOption.id" *ngFor="let teamOption of team2s; trackBy: trackTeamById">{{teamOption.name}}</option>
+                        <option [ngValue]="teamOption.id" *ngFor="let teamOption of teams; trackBy: trackTeamById">{{teamOption.name}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.team2?.dirty && editForm.controls.team2?.invalid)">

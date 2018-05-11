@@ -7,13 +7,11 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
             "relationshipName": "user",
             "otherEntityName": "user",
-            "otherEntityField": "login",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "team"
+            "otherEntityField": "login"
         }
     ],
     "changelogDate": "20180511035950",

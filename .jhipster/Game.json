@@ -25,7 +25,17 @@
             "fieldValidateRulesMax": 1000
         },
         {
-            "fieldName": "result",
+            "fieldName": "resultTeam1",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": 3
+        },
+        {
+            "fieldName": "resultTeam2",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "min",
@@ -37,22 +47,18 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
             "relationshipName": "team1",
             "otherEntityName": "team",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "game"
+            "otherEntityField": "name"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
             "relationshipName": "team2",
             "otherEntityName": "team",
-            "otherEntityField": "name",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "game"
+            "otherEntityField": "name"
         }
     ],
     "changelogDate": "20180511035951",

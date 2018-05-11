@@ -2,15 +2,15 @@ entity Team {
     name String
 }
 
-
 entity Game {
     time ZonedDateTime,
     goalsTeam1 Integer min(0) max(1000),
     goalsTeam2 Integer min(0) max(1000),
-    result Integer min(0) max(3)
+    resultTeam1 Integer min(0) max(3),
+    resultTeam2 Integer min(0) max(3)
 }
 
-relationship OneToOne {
+relationship ManyToOne {
     Game{team1(name) required} to Team,
     Game{team2(name) required} to Team,
     Team{user(login) required} to User

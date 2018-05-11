@@ -1,5 +1,6 @@
 package ru.wolfa.demo.hockey.match.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -39,17 +40,22 @@ public class Game implements Serializable {
 
     @Min(value = 0)
     @Max(value = 3)
-    @Column(name = "result")
-    private Integer result;
+    @Column(name = "result_team_1")
+    private Integer resultTeam1;
 
-    @OneToOne(optional = false)
+    @Min(value = 0)
+    @Max(value = 3)
+    @Column(name = "result_team_2")
+    private Integer resultTeam2;
+
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JsonIgnoreProperties("")
     private Team team1;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JsonIgnoreProperties("")
     private Team team2;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -100,17 +106,30 @@ public class Game implements Serializable {
         this.goalsTeam2 = goalsTeam2;
     }
 
-    public Integer getResult() {
-        return result;
+    public Integer getResultTeam1() {
+        return resultTeam1;
     }
 
-    public Game result(Integer result) {
-        this.result = result;
+    public Game resultTeam1(Integer resultTeam1) {
+        this.resultTeam1 = resultTeam1;
         return this;
     }
 
-    public void setResult(Integer result) {
-        this.result = result;
+    public void setResultTeam1(Integer resultTeam1) {
+        this.resultTeam1 = resultTeam1;
+    }
+
+    public Integer getResultTeam2() {
+        return resultTeam2;
+    }
+
+    public Game resultTeam2(Integer resultTeam2) {
+        this.resultTeam2 = resultTeam2;
+        return this;
+    }
+
+    public void setResultTeam2(Integer resultTeam2) {
+        this.resultTeam2 = resultTeam2;
     }
 
     public Team getTeam1() {
@@ -167,7 +186,8 @@ public class Game implements Serializable {
             ", time='" + getTime() + "'" +
             ", goalsTeam1=" + getGoalsTeam1() +
             ", goalsTeam2=" + getGoalsTeam2() +
-            ", result=" + getResult() +
+            ", resultTeam1=" + getResultTeam1() +
+            ", resultTeam2=" + getResultTeam2() +
             "}";
     }
 }

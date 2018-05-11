@@ -59,8 +59,11 @@ public class GameResourceIntTest {
     private static final Integer DEFAULT_GOALS_TEAM_2 = 0;
     private static final Integer UPDATED_GOALS_TEAM_2 = 1;
 
-    private static final Integer DEFAULT_RESULT = 0;
-    private static final Integer UPDATED_RESULT = 1;
+    private static final Integer DEFAULT_RESULT_TEAM_1 = 0;
+    private static final Integer UPDATED_RESULT_TEAM_1 = 1;
+
+    private static final Integer DEFAULT_RESULT_TEAM_2 = 0;
+    private static final Integer UPDATED_RESULT_TEAM_2 = 1;
 
     @Autowired
     private GameRepository gameRepository;
@@ -111,7 +114,8 @@ public class GameResourceIntTest {
             .time(DEFAULT_TIME)
             .goalsTeam1(DEFAULT_GOALS_TEAM_1)
             .goalsTeam2(DEFAULT_GOALS_TEAM_2)
-            .result(DEFAULT_RESULT);
+            .resultTeam1(DEFAULT_RESULT_TEAM_1)
+            .resultTeam2(DEFAULT_RESULT_TEAM_2);
         // Add required entity
         Team team1 = TeamResourceIntTest.createEntity(em);
         em.persist(team1);
@@ -149,7 +153,8 @@ public class GameResourceIntTest {
         assertThat(testGame.getTime()).isEqualTo(DEFAULT_TIME);
         assertThat(testGame.getGoalsTeam1()).isEqualTo(DEFAULT_GOALS_TEAM_1);
         assertThat(testGame.getGoalsTeam2()).isEqualTo(DEFAULT_GOALS_TEAM_2);
-        assertThat(testGame.getResult()).isEqualTo(DEFAULT_RESULT);
+        assertThat(testGame.getResultTeam1()).isEqualTo(DEFAULT_RESULT_TEAM_1);
+        assertThat(testGame.getResultTeam2()).isEqualTo(DEFAULT_RESULT_TEAM_2);
     }
 
     @Test
@@ -186,7 +191,8 @@ public class GameResourceIntTest {
             .andExpect(jsonPath("$.[*].time").value(hasItem(sameInstant(DEFAULT_TIME))))
             .andExpect(jsonPath("$.[*].goalsTeam1").value(hasItem(DEFAULT_GOALS_TEAM_1)))
             .andExpect(jsonPath("$.[*].goalsTeam2").value(hasItem(DEFAULT_GOALS_TEAM_2)))
-            .andExpect(jsonPath("$.[*].result").value(hasItem(DEFAULT_RESULT)));
+            .andExpect(jsonPath("$.[*].resultTeam1").value(hasItem(DEFAULT_RESULT_TEAM_1)))
+            .andExpect(jsonPath("$.[*].resultTeam2").value(hasItem(DEFAULT_RESULT_TEAM_2)));
     }
     
 
@@ -204,7 +210,8 @@ public class GameResourceIntTest {
             .andExpect(jsonPath("$.time").value(sameInstant(DEFAULT_TIME)))
             .andExpect(jsonPath("$.goalsTeam1").value(DEFAULT_GOALS_TEAM_1))
             .andExpect(jsonPath("$.goalsTeam2").value(DEFAULT_GOALS_TEAM_2))
-            .andExpect(jsonPath("$.result").value(DEFAULT_RESULT));
+            .andExpect(jsonPath("$.resultTeam1").value(DEFAULT_RESULT_TEAM_1))
+            .andExpect(jsonPath("$.resultTeam2").value(DEFAULT_RESULT_TEAM_2));
     }
     @Test
     @Transactional
@@ -230,7 +237,8 @@ public class GameResourceIntTest {
             .time(UPDATED_TIME)
             .goalsTeam1(UPDATED_GOALS_TEAM_1)
             .goalsTeam2(UPDATED_GOALS_TEAM_2)
-            .result(UPDATED_RESULT);
+            .resultTeam1(UPDATED_RESULT_TEAM_1)
+            .resultTeam2(UPDATED_RESULT_TEAM_2);
         GameDTO gameDTO = gameMapper.toDto(updatedGame);
 
         restGameMockMvc.perform(put("/api/games")
@@ -245,7 +253,8 @@ public class GameResourceIntTest {
         assertThat(testGame.getTime()).isEqualTo(UPDATED_TIME);
         assertThat(testGame.getGoalsTeam1()).isEqualTo(UPDATED_GOALS_TEAM_1);
         assertThat(testGame.getGoalsTeam2()).isEqualTo(UPDATED_GOALS_TEAM_2);
-        assertThat(testGame.getResult()).isEqualTo(UPDATED_RESULT);
+        assertThat(testGame.getResultTeam1()).isEqualTo(UPDATED_RESULT_TEAM_1);
+        assertThat(testGame.getResultTeam2()).isEqualTo(UPDATED_RESULT_TEAM_2);
     }
 
     @Test

@@ -72,7 +72,7 @@ class GameGatlingTest extends Simulation {
             .exec(http("Create new game")
             .post("/api/games")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "time":"2020-01-01T00:00:00.000Z", "goalsTeam1":"0", "goalsTeam2":"0", "result":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "time":"2020-01-01T00:00:00.000Z", "goalsTeam1":"0", "goalsTeam2":"0", "resultTeam1":"0", "resultTeam2":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_game_url"))).exitHereIfFailed
             .pause(10)

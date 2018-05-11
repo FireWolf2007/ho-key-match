@@ -34,14 +34,28 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="result" type="integer">
+            <column name="result_team_1" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="team1_id" type="bigint">
-                <constraints unique="true" nullable="false" />
-            </column>            <column name="team2_id" type="bigint">
-                <constraints unique="true" nullable="false" />
+
+            <column name="result_team_2" type="integer">
+                <constraints nullable="true" />
             </column>
+
+            <column name="team1_id" type="bigint">
+            <!--
+                <constraints nullable="false" />
+            -->
+                <constraints checkConstraint="team1_id &gt;&lt; team2_id" nullable="false" />
+            </column>
+
+            <column name="team2_id" type="bigint">
+            <!--
+                <constraints nullable="false" />
+            -->
+                <constraints checkConstraint="team1_id &gt;&lt; team2_id" nullable="false" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="game" columnName="jhi_time" columnDataType="datetime"/>

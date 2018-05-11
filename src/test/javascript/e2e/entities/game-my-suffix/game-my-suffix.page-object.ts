@@ -20,7 +20,8 @@ export class GameUpdatePage {
     timeInput = element(by.css('input#field_time'));
     goalsTeam1Input = element(by.css('input#field_goalsTeam1'));
     goalsTeam2Input = element(by.css('input#field_goalsTeam2'));
-    resultInput = element(by.css('input#field_result'));
+    resultTeam1Input = element(by.css('input#field_resultTeam1'));
+    resultTeam2Input = element(by.css('input#field_resultTeam2'));
     team1Select = element(by.css('select#field_team1'));
     team2Select = element(by.css('select#field_team2'));
 
@@ -52,12 +53,20 @@ export class GameUpdatePage {
         return this.goalsTeam2Input.getAttribute('value');
     }
 
-    setResultInput(result) {
-        this.resultInput.sendKeys(result);
+    setResultTeam1Input(resultTeam1) {
+        this.resultTeam1Input.sendKeys(resultTeam1);
     }
 
-    getResultInput() {
-        return this.resultInput.getAttribute('value');
+    getResultTeam1Input() {
+        return this.resultTeam1Input.getAttribute('value');
+    }
+
+    setResultTeam2Input(resultTeam2) {
+        this.resultTeam2Input.sendKeys(resultTeam2);
+    }
+
+    getResultTeam2Input() {
+        return this.resultTeam2Input.getAttribute('value');
     }
 
     team1SelectLastOption() {

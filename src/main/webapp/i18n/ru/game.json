@@ -19,7 +19,8 @@
             "time": "Time",
             "goalsTeam1": "Goals Team 1",
             "goalsTeam2": "Goals Team 2",
-            "result": "Result",
+            "resultTeam1": "Result Team 1",
+            "resultTeam2": "Result Team 2",
             "team1": "Team 1",
             "team2": "Team 2"
         }
