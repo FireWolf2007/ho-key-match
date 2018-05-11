@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="game">
+            <h2><span jhiTranslate="hockeyMatchApp.game.detail.title">Game</span> {{game.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hockeyMatchApp.game.time">Time</span></dt>
+                <dd>
+                    <span>{{game.time}}</span>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.goalsTeam1">Goals Team 1</span></dt>
+                <dd>
+                    <span>{{game.goalsTeam1}}</span>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.goalsTeam2">Goals Team 2</span></dt>
+                <dd>
+                    <span>{{game.goalsTeam2}}</span>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.resultTeam1">Result Team 1</span></dt>
+                <dd>
+                    <span>{{game.resultTeam1}}</span>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.resultTeam2">Result Team 2</span></dt>
+                <dd>
+                    <span>{{game.resultTeam2}}</span>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.team1">Team 1</span></dt>
+                <dd>
+                    <div *ngIf="game.team1Id">
+                        <a [routerLink]="['/team', game.team1Id, 'view']">{{game.team1Name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.team2">Team 2</span></dt>
+                <dd>
+                    <div *ngIf="game.team2Id">
+                        <a [routerLink]="['/team', game.team2Id, 'view']">{{game.team2Name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <span class="fas fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/game', game.id, 'edit']"
+                    class="btn btn-primary">
+                <span class="fas fa-pencil-alt"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

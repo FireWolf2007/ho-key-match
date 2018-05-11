@@ -1,14 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { HockeyMatchTeamMySuffixModule } from './team-my-suffix/team-my-suffix.module';
-import { HockeyMatchGameMySuffixModule } from './game-my-suffix/game-my-suffix.module';
+import { HockeyMatchTeamModule } from './team/team.module';
+import { HockeyMatchGameModule } from './game/game.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     // prettier-ignore
     imports: [
-        HockeyMatchTeamMySuffixModule,
-        HockeyMatchGameMySuffixModule,
+        HockeyMatchTeamModule,
+        HockeyMatchGameModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
