@@ -1,0 +1,27 @@
+
+{
+    "hockeyMatchApp": {
+        "game" : {
+            "home": {
+                "title": "Games",
+                "createLabel": "Создать новый Game",
+                "createOrEditLabel": "Создать или отредактировать Game"
+            },
+            "created": "Новый Game создан с идентификатором {{ param }}",
+            "updated": "Game обновлен с идентификатором {{ param }}",
+            "deleted": "Game удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Game {{ id }}?"
+            },
+            "detail": {
+                "title": "Game"
+            },
+            "time": "Time",
+            "goalsTeam1": "Goals Team 1",
+            "goalsTeam2": "Goals Team 2",
+            "result": "Result",
+            "team1": "Team 1",
+            "team2": "Team 2"
+        }
+    }
+}
