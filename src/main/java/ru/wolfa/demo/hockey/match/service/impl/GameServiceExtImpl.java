@@ -6,10 +6,13 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ru.wolfa.demo.hockey.match.config.Constants;
 import ru.wolfa.demo.hockey.match.repository.GameRepository;
 import ru.wolfa.demo.hockey.match.security.AuthoritiesConstants;
 import ru.wolfa.demo.hockey.match.security.SecurityUtils;
+import ru.wolfa.demo.hockey.match.service.TeamService;
 import ru.wolfa.demo.hockey.match.service.dto.GameDTO;
+import ru.wolfa.demo.hockey.match.service.dto.TeamDTO;
 import ru.wolfa.demo.hockey.match.service.mapper.GameMapper;
 import ru.wolfa.demo.hockey.match.web.rest.errors.BadRequestAlertException;
 
@@ -26,12 +29,14 @@ public class GameServiceExtImpl extends GameServiceImpl {
      */
     @Override
     public GameDTO save(GameDTO gameDTO) {
+        // Rule 1
         if (gameDTO.getTeam1Id().equals(gameDTO.getTeam2Id())) {
             throw new BadRequestAlertException("team1 and team2 must be different commands","GameDTO", "game.teams.must.differ");
         }
         if (gameDTO.getId() != null) {
             Optional<GameDTO> opt = findOne(gameDTO.getId());
             if (opt.isPresent()) {
+                // Rule 2
                 GameDTO dto = opt.get();
                 if (
                         (!dto.getTeam1Id().equals(gameDTO.getTeam1Id())
@@ -42,11 +47,23 @@ public class GameServiceExtImpl extends GameServiceImpl {
                 }
             }
         }
+        // Rule 3
+        if (!SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            TeamDTO optTeamDTO = teamService.findOne(gameDTO.getTeam1Id()).get();
+            if (!SecurityUtils.getCurrentUserLogin().orElse(Constants.ANONYMOUS_USER).equals(optTeamDTO.getUserLogin())) {
+                optTeamDTO = teamService.findOne(gameDTO.getTeam2Id()).get();
+                if (!SecurityUtils.getCurrentUserLogin().orElse(Constants.ANONYMOUS_USER).equals(optTeamDTO.getUserLogin())) {
+                    throw new BadRequestAlertException("Create game allowed only for admin or user of the participating team","GameDTO", "game.create.by.not.participating.team.forbidden");
+                }
+            }
+        }
         return super.save(gameDTO);
     }
 
-    public GameServiceExtImpl(GameRepository gameRepository, GameMapper gameMapper) {
+    public GameServiceExtImpl(GameRepository gameRepository, GameMapper gameMapper, TeamService teamService) {
         super(gameRepository, gameMapper);
+        this.teamService = teamService;
     }
 
+    private final TeamService teamService;
 }
