@@ -4,31 +4,28 @@ import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { HockeyMatchTestModule } from '../../../test.module';
-import { GameUpdateComponent } from 'app/entities/game/game-update.component';
-import { GameService } from 'app/entities/game/game.service';
-import { Game } from 'app/shared/model/game.model';
-
-import { TournamentService } from 'app/entities/tournament';
-import { TeamService } from 'app/entities/team';
+import { TournamentUpdateComponent } from 'app/entities/tournament/tournament-update.component';
+import { TournamentService } from 'app/entities/tournament/tournament.service';
+import { Tournament } from 'app/shared/model/tournament.model';
 
 describe('Component Tests', () => {
-    describe('Game Management Update Component', () => {
-        let comp: GameUpdateComponent;
-        let fixture: ComponentFixture<GameUpdateComponent>;
-        let service: GameService;
+    describe('Tournament Management Update Component', () => {
+        let comp: TournamentUpdateComponent;
+        let fixture: ComponentFixture<TournamentUpdateComponent>;
+        let service: TournamentService;
 
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [HockeyMatchTestModule],
-                declarations: [GameUpdateComponent],
-                providers: [TournamentService, TeamService, GameService]
+                declarations: [TournamentUpdateComponent],
+                providers: [TournamentService]
             })
-                .overrideTemplate(GameUpdateComponent, '')
+                .overrideTemplate(TournamentUpdateComponent, '')
                 .compileComponents();
 
-            fixture = TestBed.createComponent(GameUpdateComponent);
+            fixture = TestBed.createComponent(TournamentUpdateComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(GameService);
+            service = fixture.debugElement.injector.get(TournamentService);
         });
 
         describe('save', () => {
@@ -36,9 +33,9 @@ describe('Component Tests', () => {
                 'Should call update service on save for existing entity',
                 fakeAsync(() => {
                     // GIVEN
-                    const entity = new Game(123);
+                    const entity = new Tournament(123);
                     spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({ body: entity })));
-                    comp.game = entity;
+                    comp.tournament = entity;
                     // WHEN
                     comp.save();
                     tick(); // simulate async
@@ -53,9 +50,9 @@ describe('Component Tests', () => {
                 'Should call create service on save for new entity',
                 fakeAsync(() => {
                     // GIVEN
-                    const entity = new Game();
+                    const entity = new Tournament();
                     spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({ body: entity })));
-                    comp.game = entity;
+                    comp.tournament = entity;
                     // WHEN
                     comp.save();
                     tick(); // simulate async

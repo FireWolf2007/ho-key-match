@@ -17,7 +17,10 @@
                 "title": "Team"
             },
             "name": "Name",
-            "user": "User"
+            "user": "User",
+            "help": {
+                "name": "Название команды"
+            }
         }
     }
 }

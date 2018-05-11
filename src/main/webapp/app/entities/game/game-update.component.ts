@@ -8,6 +8,8 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IGame } from 'app/shared/model/game.model';
 import { GameService } from './game.service';
+import { ITournament } from 'app/shared/model/tournament.model';
+import { TournamentService } from 'app/entities/tournament';
 import { ITeam } from 'app/shared/model/team.model';
 import { TeamService } from 'app/entities/team';
 
@@ -19,12 +21,15 @@ export class GameUpdateComponent implements OnInit {
     private _game: IGame;
     isSaving: boolean;
 
+    tournaments: ITournament[];
+
     teams: ITeam[];
     time: string;
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private gameService: GameService,
+        private tournamentService: TournamentService,
         private teamService: TeamService,
         private route: ActivatedRoute
     ) {}
@@ -34,6 +39,12 @@ export class GameUpdateComponent implements OnInit {
         this.route.data.subscribe(({ game }) => {
             this.game = game.body ? game.body : game;
         });
+        this.tournamentService.query().subscribe(
+            (res: HttpResponse<ITournament[]>) => {
+                this.tournaments = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
         this.teamService.query().subscribe(
             (res: HttpResponse<ITeam[]>) => {
                 this.teams = res.body;
@@ -71,6 +82,10 @@ export class GameUpdateComponent implements OnInit {
 
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackTournamentById(index: number, item: ITournament) {
+        return item.id;
     }
 
     trackTeamById(index: number, item: ITeam) {

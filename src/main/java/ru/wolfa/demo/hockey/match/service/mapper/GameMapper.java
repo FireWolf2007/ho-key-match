@@ -8,15 +8,18 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Game and its DTO GameDTO.
  */
-@Mapper(componentModel = "spring", uses = {TeamMapper.class})
+@Mapper(componentModel = "spring", uses = {TournamentMapper.class, TeamMapper.class})
 public interface GameMapper extends EntityMapper<GameDTO, Game> {
 
+    @Mapping(source = "tournament.id", target = "tournamentId")
+    @Mapping(source = "tournament.name", target = "tournamentName")
     @Mapping(source = "team1.id", target = "team1Id")
     @Mapping(source = "team1.name", target = "team1Name")
     @Mapping(source = "team2.id", target = "team2Id")
     @Mapping(source = "team2.name", target = "team2Name")
     GameDTO toDto(Game game);
 
+    @Mapping(source = "tournamentId", target = "tournament")
     @Mapping(source = "team1Id", target = "team1")
     @Mapping(source = "team2Id", target = "team2")
     Game toEntity(GameDTO gameDTO);

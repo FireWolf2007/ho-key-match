@@ -3,6 +3,7 @@ package ru.wolfa.demo.hockey.match.web.rest;
 import ru.wolfa.demo.hockey.match.HockeyMatchApp;
 
 import ru.wolfa.demo.hockey.match.domain.Game;
+import ru.wolfa.demo.hockey.match.domain.Tournament;
 import ru.wolfa.demo.hockey.match.domain.Team;
 import ru.wolfa.demo.hockey.match.domain.Team;
 import ru.wolfa.demo.hockey.match.repository.GameRepository;
@@ -116,6 +117,11 @@ public class GameResourceIntTest {
             .goalsTeam2(DEFAULT_GOALS_TEAM_2)
             .resultTeam1(DEFAULT_RESULT_TEAM_1)
             .resultTeam2(DEFAULT_RESULT_TEAM_2);
+        // Add required entity
+        Tournament tournament = TournamentResourceIntTest.createEntity(em);
+        em.persist(tournament);
+        em.flush();
+        game.setTournament(tournament);
         // Add required entity
         Team team1 = TeamResourceIntTest.createEntity(em);
         em.persist(team1);

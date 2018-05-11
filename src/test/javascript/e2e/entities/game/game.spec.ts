@@ -40,6 +40,7 @@ describe('Game e2e test', () => {
         expect(gameUpdatePage.getResultTeam1Input()).toMatch('5');
         gameUpdatePage.setResultTeam2Input('5');
         expect(gameUpdatePage.getResultTeam2Input()).toMatch('5');
+        gameUpdatePage.tournamentSelectLastOption();
         gameUpdatePage.team1SelectLastOption();
         gameUpdatePage.team2SelectLastOption();
         gameUpdatePage.save();

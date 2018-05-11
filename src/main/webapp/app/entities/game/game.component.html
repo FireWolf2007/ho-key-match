@@ -20,6 +20,7 @@
             <th jhiSortBy="goalsTeam2"><span jhiTranslate="hockeyMatchApp.game.goalsTeam2">Goals Team 2</span> <span class="fas fa-sort"></span></th>
             <th jhiSortBy="resultTeam1"><span jhiTranslate="hockeyMatchApp.game.resultTeam1">Result Team 1</span> <span class="fas fa-sort"></span></th>
             <th jhiSortBy="resultTeam2"><span jhiTranslate="hockeyMatchApp.game.resultTeam2">Result Team 2</span> <span class="fas fa-sort"></span></th>
+            <th jhiSortBy="tournamentName"><span jhiTranslate="hockeyMatchApp.game.tournament">Tournament</span> <span class="fas fa-sort"></span></th>
             <th jhiSortBy="team1Name"><span jhiTranslate="hockeyMatchApp.game.team1">Team 1</span> <span class="fas fa-sort"></span></th>
             <th jhiSortBy="team2Name"><span jhiTranslate="hockeyMatchApp.game.team2">Team 2</span> <span class="fas fa-sort"></span></th>
             <th></th>
@@ -33,6 +34,11 @@
                 <td>{{game.goalsTeam2}}</td>
                 <td>{{game.resultTeam1}}</td>
                 <td>{{game.resultTeam2}}</td>
+                <td>
+                    <div *ngIf="game.tournamentId">
+                        <a [routerLink]="['../tournament', game.tournamentId , 'view' ]" >{{game.tournamentName}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="game.team1Id">
                         <a [routerLink]="['../team', game.team1Id , 'view' ]" >{{game.team1Name}}</a>

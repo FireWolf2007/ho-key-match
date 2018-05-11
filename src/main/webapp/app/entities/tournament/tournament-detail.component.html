@@ -1,17 +1,13 @@
 <div class="row justify-content-center">
     <div class="col-8">
-        <div *ngIf="team">
-            <h2><span jhiTranslate="hockeyMatchApp.team.detail.title">Team</span> {{team.id}}</h2>
+        <div *ngIf="tournament">
+            <h2><span jhiTranslate="hockeyMatchApp.tournament.detail.title">Tournament</span> {{tournament.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="hockeyMatchApp.team.name" [ngbTooltip]="'hockeyMatchApp.team.help.name' | translate">Name</span></dt>
+                <dt><span jhiTranslate="hockeyMatchApp.tournament.name" [ngbTooltip]="'hockeyMatchApp.tournament.help.name' | translate">Name</span></dt>
                 <dd>
-                    <span>{{team.name}}</span>
-                </dd>
-                <dt><span jhiTranslate="hockeyMatchApp.team.user">User</span></dt>
-                <dd>
-                    {{team.userLogin}}
+                    <span>{{tournament.name}}</span>
                 </dd>
             </dl>
 
@@ -22,7 +18,7 @@
             </button>
 
             <button type="button"
-                    [routerLink]="['/team', team.id, 'edit']"
+                    [routerLink]="['/tournament', tournament.id, 'edit']"
                     class="btn btn-primary">
                 <span class="fas fa-pencil-alt"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>

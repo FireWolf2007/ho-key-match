@@ -1,16 +1,35 @@
-entity Team {
+/* Турнир */
+entity Tournament {
+    /* Название турнира */
     name String
 }
 
+/* Команда */
+entity Team {
+    /* Название команды */
+    name String
+}
+
+/* Игра в матче между 2 командами */
 entity Game {
+    /* Время начала */
     time ZonedDateTime,
+
+    /* Голы забытые командой 1 */
     goalsTeam1 Integer min(0) max(1000),
+
+    /* Голы забытые командой 2 */
     goalsTeam2 Integer min(0) max(1000),
+
+    /* Баллы начисленные команде 1 */
     resultTeam1 Integer min(0) max(3),
+
+    /* Баллы начисленные команде 2 */
     resultTeam2 Integer min(0) max(3)
 }
 
 relationship ManyToOne {
+    Game{tournament(name) required} to Tournament,
     Game{team1(name) required} to Team,
     Game{team2(name) required} to Team,
     Team{user(login) required} to User
@@ -20,6 +39,7 @@ relationship ManyToOne {
 // Set pagination options
 paginate Game with infinite-scroll
 paginate Team with pagination
+paginate Tournament with pagination
 
 dto * with mapstruct
 

@@ -5,25 +5,31 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="hockeyMatchApp.game.time">Time</span></dt>
+                <dt><span jhiTranslate="hockeyMatchApp.game.time" [ngbTooltip]="'hockeyMatchApp.game.help.time' | translate">Time</span></dt>
                 <dd>
                     <span>{{game.time}}</span>
                 </dd>
-                <dt><span jhiTranslate="hockeyMatchApp.game.goalsTeam1">Goals Team 1</span></dt>
+                <dt><span jhiTranslate="hockeyMatchApp.game.goalsTeam1" [ngbTooltip]="'hockeyMatchApp.game.help.goalsTeam1' | translate">Goals Team 1</span></dt>
                 <dd>
                     <span>{{game.goalsTeam1}}</span>
                 </dd>
-                <dt><span jhiTranslate="hockeyMatchApp.game.goalsTeam2">Goals Team 2</span></dt>
+                <dt><span jhiTranslate="hockeyMatchApp.game.goalsTeam2" [ngbTooltip]="'hockeyMatchApp.game.help.goalsTeam2' | translate">Goals Team 2</span></dt>
                 <dd>
                     <span>{{game.goalsTeam2}}</span>
                 </dd>
-                <dt><span jhiTranslate="hockeyMatchApp.game.resultTeam1">Result Team 1</span></dt>
+                <dt><span jhiTranslate="hockeyMatchApp.game.resultTeam1" [ngbTooltip]="'hockeyMatchApp.game.help.resultTeam1' | translate">Result Team 1</span></dt>
                 <dd>
                     <span>{{game.resultTeam1}}</span>
                 </dd>
-                <dt><span jhiTranslate="hockeyMatchApp.game.resultTeam2">Result Team 2</span></dt>
+                <dt><span jhiTranslate="hockeyMatchApp.game.resultTeam2" [ngbTooltip]="'hockeyMatchApp.game.help.resultTeam2' | translate">Result Team 2</span></dt>
                 <dd>
                     <span>{{game.resultTeam2}}</span>
+                </dd>
+                <dt><span jhiTranslate="hockeyMatchApp.game.tournament">Tournament</span></dt>
+                <dd>
+                    <div *ngIf="game.tournamentId">
+                        <a [routerLink]="['/tournament', game.tournamentId, 'view']">{{game.tournamentName}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="hockeyMatchApp.game.team1">Team 1</span></dt>
                 <dd>

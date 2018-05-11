@@ -7,6 +7,8 @@ export interface IGame {
     goalsTeam2?: number;
     resultTeam1?: number;
     resultTeam2?: number;
+    tournamentName?: string;
+    tournamentId?: number;
     team1Name?: string;
     team1Id?: number;
     team2Name?: string;
@@ -21,6 +23,8 @@ export class Game implements IGame {
         public goalsTeam2?: number,
         public resultTeam1?: number,
         public resultTeam2?: number,
+        public tournamentName?: string,
+        public tournamentId?: number,
         public team1Name?: string,
         public team1Id?: number,
         public team2Name?: string,

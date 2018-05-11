@@ -1,6 +1,8 @@
 package ru.wolfa.demo.hockey.match.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -12,8 +14,9 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
- * A Game.
+ * Игра в матче между 2 командами
  */
+@ApiModel(description = "Игра в матче между 2 командами")
 @Entity
 @Table(name = "game")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -25,28 +28,53 @@ public class Game implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Время начала
+     */
+    @ApiModelProperty(value = "Время начала")
     @Column(name = "jhi_time")
     private ZonedDateTime time;
 
+    /**
+     * Голы забытые командой 1
+     */
     @Min(value = 0)
     @Max(value = 1000)
+    @ApiModelProperty(value = "Голы забытые командой 1")
     @Column(name = "goals_team_1")
     private Integer goalsTeam1;
 
+    /**
+     * Голы забытые командой 2
+     */
     @Min(value = 0)
     @Max(value = 1000)
+    @ApiModelProperty(value = "Голы забытые командой 2")
     @Column(name = "goals_team_2")
     private Integer goalsTeam2;
 
+    /**
+     * Баллы начисленные команде 1
+     */
     @Min(value = 0)
     @Max(value = 3)
+    @ApiModelProperty(value = "Баллы начисленные команде 1")
     @Column(name = "result_team_1")
     private Integer resultTeam1;
 
+    /**
+     * Баллы начисленные команде 2
+     */
     @Min(value = 0)
     @Max(value = 3)
+    @ApiModelProperty(value = "Баллы начисленные команде 2")
     @Column(name = "result_team_2")
     private Integer resultTeam2;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties("")
+    private Tournament tournament;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -130,6 +158,19 @@ public class Game implements Serializable {
 
     public void setResultTeam2(Integer resultTeam2) {
         this.resultTeam2 = resultTeam2;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public Game tournament(Tournament tournament) {
+        this.tournament = tournament;
+        return this;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public Team getTeam1() {

@@ -21,8 +21,16 @@
             "goalsTeam2": "Goals Team 2",
             "resultTeam1": "Result Team 1",
             "resultTeam2": "Result Team 2",
+            "tournament": "Tournament",
             "team1": "Team 1",
-            "team2": "Team 2"
+            "team2": "Team 2",
+            "help": {
+                "time": "Время начала",
+                "goalsTeam1": "Голы забытые командой 1",
+                "goalsTeam2": "Голы забытые командой 2",
+                "resultTeam1": "Баллы начисленные команде 1",
+                "resultTeam2": "Баллы начисленные команде 2"
+            }
         }
     }
 }

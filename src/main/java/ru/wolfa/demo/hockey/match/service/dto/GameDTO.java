@@ -30,6 +30,10 @@ public class GameDTO implements Serializable {
     @Max(value = 3)
     private Integer resultTeam2;
 
+    private Long tournamentId;
+
+    private String tournamentName;
+
     private Long team1Id;
 
     private String team1Name;
@@ -84,6 +88,22 @@ public class GameDTO implements Serializable {
 
     public void setResultTeam2(Integer resultTeam2) {
         this.resultTeam2 = resultTeam2;
+    }
+
+    public Long getTournamentId() {
+        return tournamentId;
+    }
+
+    public void setTournamentId(Long tournamentId) {
+        this.tournamentId = tournamentId;
+    }
+
+    public String getTournamentName() {
+        return tournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        this.tournamentName = tournamentName;
     }
 
     public Long getTeam1Id() {
@@ -148,6 +168,8 @@ public class GameDTO implements Serializable {
             ", goalsTeam2=" + getGoalsTeam2() +
             ", resultTeam1=" + getResultTeam1() +
             ", resultTeam2=" + getResultTeam2() +
+            ", tournament=" + getTournamentId() +
+            ", tournament='" + getTournamentName() + "'" +
             ", team1=" + getTeam1Id() +
             ", team1='" + getTeam1Name() + "'" +
             ", team2=" + getTeam2Id() +

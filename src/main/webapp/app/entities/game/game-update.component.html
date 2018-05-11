@@ -10,14 +10,14 @@
                         [(ngModel)]="game.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.time" for="field_time">Time</label>
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.time" for="field_time" [ngbTooltip]="'hockeyMatchApp.game.help.time' | translate">Time</label>
                     <div class="d-flex">
                         <input id="field_time" type="datetime-local" class="form-control" name="time" [(ngModel)]="time"
                         />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.goalsTeam1" for="field_goalsTeam1">Goals Team 1</label>
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.goalsTeam1" for="field_goalsTeam1" [ngbTooltip]="'hockeyMatchApp.game.help.goalsTeam1' | translate">Goals Team 1</label>
                     <input type="number" class="form-control" name="goalsTeam1" id="field_goalsTeam1"
                         [(ngModel)]="game.goalsTeam1" min="0" max="1000"/>
                     <div [hidden]="!(editForm.controls.goalsTeam1?.dirty && editForm.controls.goalsTeam1?.invalid)">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.goalsTeam2" for="field_goalsTeam2">Goals Team 2</label>
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.goalsTeam2" for="field_goalsTeam2" [ngbTooltip]="'hockeyMatchApp.game.help.goalsTeam2' | translate">Goals Team 2</label>
                     <input type="number" class="form-control" name="goalsTeam2" id="field_goalsTeam2"
                         [(ngModel)]="game.goalsTeam2" min="0" max="1000"/>
                     <div [hidden]="!(editForm.controls.goalsTeam2?.dirty && editForm.controls.goalsTeam2?.invalid)">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam1" for="field_resultTeam1">Result Team 1</label>
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam1" for="field_resultTeam1" [ngbTooltip]="'hockeyMatchApp.game.help.resultTeam1' | translate">Result Team 1</label>
                     <input type="number" class="form-control" name="resultTeam1" id="field_resultTeam1"
                         [(ngModel)]="game.resultTeam1" min="0" max="3"/>
                     <div [hidden]="!(editForm.controls.resultTeam1?.dirty && editForm.controls.resultTeam1?.invalid)">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam2" for="field_resultTeam2">Result Team 2</label>
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam2" for="field_resultTeam2" [ngbTooltip]="'hockeyMatchApp.game.help.resultTeam2' | translate">Result Team 2</label>
                     <input type="number" class="form-control" name="resultTeam2" id="field_resultTeam2"
                         [(ngModel)]="game.resultTeam2" min="0" max="3"/>
                     <div [hidden]="!(editForm.controls.resultTeam2?.dirty && editForm.controls.resultTeam2?.invalid)">
@@ -93,6 +93,19 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.tournament" for="field_tournament">Tournament</label>
+                    <select class="form-control" id="field_tournament" name="tournament" [(ngModel)]="game.tournamentId"  required>
+                        <option *ngIf="!editForm.value.tournament" [ngValue]="null" selected></option>
+                        <option [ngValue]="tournamentOption.id" *ngFor="let tournamentOption of tournaments; trackBy: trackTournamentById">{{tournamentOption.name}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.tournament?.dirty && editForm.controls.tournament?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tournament?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.team1" for="field_team1">Team 1</label>
                     <select class="form-control" id="field_team1" name="team1" [(ngModel)]="game.team1Id"  required>

@@ -2,6 +2,7 @@
     "fields": [
         {
             "fieldName": "name",
+            "javadoc": "Название команды",
             "fieldType": "String"
         }
     ],
@@ -15,6 +16,7 @@
         }
     ],
     "changelogDate": "20180511035950",
+    "javadoc": "Команда",
     "entityTableName": "team",
     "dto": "mapstruct",
     "pagination": "pagination",

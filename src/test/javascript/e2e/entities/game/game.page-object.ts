@@ -22,6 +22,7 @@ export class GameUpdatePage {
     goalsTeam2Input = element(by.css('input#field_goalsTeam2'));
     resultTeam1Input = element(by.css('input#field_resultTeam1'));
     resultTeam2Input = element(by.css('input#field_resultTeam2'));
+    tournamentSelect = element(by.css('select#field_tournament'));
     team1Select = element(by.css('select#field_team1'));
     team2Select = element(by.css('select#field_team2'));
 
@@ -67,6 +68,25 @@ export class GameUpdatePage {
 
     getResultTeam2Input() {
         return this.resultTeam2Input.getAttribute('value');
+    }
+
+    tournamentSelectLastOption() {
+        this.tournamentSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    tournamentSelectOption(option) {
+        this.tournamentSelect.sendKeys(option);
+    }
+
+    getTournamentSelect() {
+        return this.tournamentSelect;
+    }
+
+    getTournamentSelectedOption() {
+        return this.tournamentSelect.element(by.css('option:checked')).getText();
     }
 
     team1SelectLastOption() {

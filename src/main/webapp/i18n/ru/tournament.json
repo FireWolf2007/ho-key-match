@@ -1,0 +1,25 @@
+
+{
+    "hockeyMatchApp": {
+        "tournament" : {
+            "home": {
+                "title": "Tournaments",
+                "createLabel": "Создать новый Tournament",
+                "createOrEditLabel": "Создать или отредактировать Tournament"
+            },
+            "created": "Новый Tournament создан с идентификатором {{ param }}",
+            "updated": "Tournament обновлен с идентификатором {{ param }}",
+            "deleted": "Tournament удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Tournament {{ id }}?"
+            },
+            "detail": {
+                "title": "Tournament"
+            },
+            "name": "Name",
+            "help": {
+                "name": "Название турнира"
+            }
+        }
+    }
+}

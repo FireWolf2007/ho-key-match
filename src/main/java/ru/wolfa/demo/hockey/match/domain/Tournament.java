@@ -1,25 +1,23 @@
 package ru.wolfa.demo.hockey.match.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Команда
+ * Турнир
  */
-@ApiModel(description = "Команда")
+@ApiModel(description = "Турнир")
 @Entity
-@Table(name = "team")
+@Table(name = "tournament")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Team implements Serializable {
+public class Tournament implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,16 +26,11 @@ public class Team implements Serializable {
     private Long id;
 
     /**
-     * Название команды
+     * Название турнира
      */
-    @ApiModelProperty(value = "Название команды")
+    @ApiModelProperty(value = "Название турнира")
     @Column(name = "name")
     private String name;
-
-    @ManyToOne(optional = false)
-    @NotNull
-    @JsonIgnoreProperties("")
-    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -52,26 +45,13 @@ public class Team implements Serializable {
         return name;
     }
 
-    public Team name(String name) {
+    public Tournament name(String name) {
         this.name = name;
         return this;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Team user(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -83,11 +63,11 @@ public class Team implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Team team = (Team) o;
-        if (team.getId() == null || getId() == null) {
+        Tournament tournament = (Tournament) o;
+        if (tournament.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), team.getId());
+        return Objects.equals(getId(), tournament.getId());
     }
 
     @Override
@@ -97,7 +77,7 @@ public class Team implements Serializable {
 
     @Override
     public String toString() {
-        return "Team{" +
+        return "Tournament{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             "}";

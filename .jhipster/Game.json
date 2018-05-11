@@ -2,10 +2,12 @@
     "fields": [
         {
             "fieldName": "time",
+            "javadoc": "Время начала",
             "fieldType": "ZonedDateTime"
         },
         {
             "fieldName": "goalsTeam1",
+            "javadoc": "Голы забытые командой 1",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "min",
@@ -16,6 +18,7 @@
         },
         {
             "fieldName": "goalsTeam2",
+            "javadoc": "Голы забытые командой 2",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "min",
@@ -26,6 +29,7 @@
         },
         {
             "fieldName": "resultTeam1",
+            "javadoc": "Баллы начисленные команде 1",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "min",
@@ -36,6 +40,7 @@
         },
         {
             "fieldName": "resultTeam2",
+            "javadoc": "Баллы начисленные команде 2",
             "fieldType": "Integer",
             "fieldValidateRules": [
                 "min",
@@ -46,6 +51,13 @@
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tournament",
+            "otherEntityName": "tournament",
+            "otherEntityField": "name"
+        },
         {
             "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
@@ -62,6 +74,7 @@
         }
     ],
     "changelogDate": "20180511035951",
+    "javadoc": "Игра в матче между 2 командами",
     "entityTableName": "game",
     "dto": "mapstruct",
     "pagination": "infinite-scroll",
