@@ -12,4 +12,6 @@
     <include file="config/liquibase/changelog/20180511035950_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180511035951_added_entity_constraints_Game.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- Our additional migrations -->
+    <include file="config/liquibase/changelog/Game_additional_constraint.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

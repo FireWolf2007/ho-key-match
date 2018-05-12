@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!-- 
+    ALTER TABLE game ADD CONSTRAINT uq_game_teams UNIQUE(team1_id,team2_id);
+     -->
+    <changeSet author="volf" id="uq_game_teams">
+        <addUniqueConstraint columnNames="team1_id, team2_id" constraintName="uq_game_teams" tableName="game" />
+    </changeSet>
+    <changeSet author="volf" id="trigger_teams_in_game" dbms="mysql">
+        <sql dbms="mysql" endDelimiter="$$">
+            CREATE TRIGGER trigger_teams_in_game BEFORE INSERT ON game FOR EACH ROW 
+BEGIN 
+    DECLARE found_count,nteam1,nteam2,dummy INT;
+    SET nteam1 = NEW.team1_id;
+    SET nteam2 = NEW.team2_id;
+    SELECT COUNT(1) INTO found_count FROM game
+    WHERE team1_id = nteam2 AND team2_id = nteam1;
+    IF found_count = 1 THEN
+        SELECT 1 INTO dummy FROM information_schema.tables;
+    END IF;
+END;
+        </sql>
+    </changeSet>
+</databaseChangeLog>
