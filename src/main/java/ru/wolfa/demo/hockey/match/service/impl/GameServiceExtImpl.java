@@ -57,6 +57,23 @@ public class GameServiceExtImpl extends GameServiceImpl {
                 }
             }
         }
+        // Rule 4
+        if (gameDTO.getGoalsTeam1() != null && gameDTO.getGoalsTeam2() != null
+                && gameDTO.getResultTeam1() != null && gameDTO.getResultTeam2() != null) {
+            int total = gameDTO.getResultTeam1().intValue() + gameDTO.getResultTeam2().intValue();
+            if (total != 3) {
+                throw new BadRequestAlertException("Result sum must be 3","GameDTO", "game.result.not.three");
+            }
+            if (gameDTO.getResultTeam1().intValue() > gameDTO.getResultTeam2().intValue()) {
+                if (gameDTO.getGoalsTeam1().intValue() < gameDTO.getGoalsTeam2().intValue()) {
+                    throw new BadRequestAlertException("Results incorrect: gaols by team1 > goals by team2","GameDTO", "game.goals.and.result.conflict");
+                }
+            } else {
+                if (gameDTO.getGoalsTeam1().intValue() > gameDTO.getGoalsTeam2().intValue()) {
+                    throw new BadRequestAlertException("Results incorrect: gaols by team1 < goals by team2","GameDTO", "game.goals.and.result.conflict");
+                }
+            }
+        }
         return super.save(gameDTO);
     }
 
