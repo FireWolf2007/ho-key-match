@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
@@ -97,6 +97,6 @@ export class GameUpdateComponent implements OnInit {
 
     set game(game: IGame) {
         this._game = game;
-        this.time = moment(game.time).format();
+        this.time = moment(game.time).format(DATE_TIME_FORMAT);
     }
 }

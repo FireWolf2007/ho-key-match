@@ -3,16 +3,13 @@ import { RouterModule } from '@angular/router';
 
 import { HockeyMatchSharedModule } from 'app/shared';
 import {
-    TournamentService,
     TournamentComponent,
     TournamentDetailComponent,
     TournamentUpdateComponent,
     TournamentDeletePopupComponent,
     TournamentDeleteDialogComponent,
     tournamentRoute,
-    tournamentPopupRoute,
-    TournamentResolve,
-    TournamentResolvePagingParams
+    tournamentPopupRoute
 } from './';
 
 const ENTITY_STATES = [...tournamentRoute, ...tournamentPopupRoute];
@@ -27,7 +24,6 @@ const ENTITY_STATES = [...tournamentRoute, ...tournamentPopupRoute];
         TournamentDeletePopupComponent
     ],
     entryComponents: [TournamentComponent, TournamentUpdateComponent, TournamentDeleteDialogComponent, TournamentDeletePopupComponent],
-    providers: [TournamentService, TournamentResolve, TournamentResolvePagingParams],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HockeyMatchTournamentModule {}

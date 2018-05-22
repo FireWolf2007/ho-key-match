@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.goalsTeam1" for="field_goalsTeam1" [ngbTooltip]="'hockeyMatchApp.game.help.goalsTeam1' | translate">Goals Team 1</label>
                     <input type="number" class="form-control" name="goalsTeam1" id="field_goalsTeam1"
-                        [(ngModel)]="game.goalsTeam1" min="0" max="1000"/>
+                        [(ngModel)]="game.goalsTeam1" min="0" jhiMin="0" max="1000" jhiMax="1000"/>
                     <div [hidden]="!(editForm.controls.goalsTeam1?.dirty && editForm.controls.goalsTeam1?.invalid)">
                         <small class="form-text text-danger"
                             [hidden]="!editForm.controls.goalsTeam1?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.goalsTeam2" for="field_goalsTeam2" [ngbTooltip]="'hockeyMatchApp.game.help.goalsTeam2' | translate">Goals Team 2</label>
                     <input type="number" class="form-control" name="goalsTeam2" id="field_goalsTeam2"
-                        [(ngModel)]="game.goalsTeam2" min="0" max="1000"/>
+                        [(ngModel)]="game.goalsTeam2" min="0" jhiMin="0" max="1000" jhiMax="1000"/>
                     <div [hidden]="!(editForm.controls.goalsTeam2?.dirty && editForm.controls.goalsTeam2?.invalid)">
                         <small class="form-text text-danger"
                             [hidden]="!editForm.controls.goalsTeam2?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam1" for="field_resultTeam1" [ngbTooltip]="'hockeyMatchApp.game.help.resultTeam1' | translate">Result Team 1</label>
                     <input type="number" class="form-control" name="resultTeam1" id="field_resultTeam1"
-                        [(ngModel)]="game.resultTeam1" min="0" max="3"/>
+                        [(ngModel)]="game.resultTeam1" min="0" jhiMin="0" max="3" jhiMax="3"/>
                     <div [hidden]="!(editForm.controls.resultTeam1?.dirty && editForm.controls.resultTeam1?.invalid)">
                         <small class="form-text text-danger"
                             [hidden]="!editForm.controls.resultTeam1?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
@@ -76,7 +76,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="hockeyMatchApp.game.resultTeam2" for="field_resultTeam2" [ngbTooltip]="'hockeyMatchApp.game.help.resultTeam2' | translate">Result Team 2</label>
                     <input type="number" class="form-control" name="resultTeam2" id="field_resultTeam2"
-                        [(ngModel)]="game.resultTeam2" min="0" max="3"/>
+                        [(ngModel)]="game.resultTeam2" min="0" jhiMin="0" max="3" jhiMax="3"/>
                     <div [hidden]="!(editForm.controls.resultTeam2?.dirty && editForm.controls.resultTeam2?.invalid)">
                         <small class="form-text text-danger"
                             [hidden]="!editForm.controls.resultTeam2?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 0 }">
@@ -135,10 +135,10 @@
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <span class="fas fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-                    <span class="fas fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>

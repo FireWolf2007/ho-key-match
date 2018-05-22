@@ -3,15 +3,13 @@ import { RouterModule } from '@angular/router';
 
 import { HockeyMatchSharedModule } from 'app/shared';
 import {
-    GameService,
     GameComponent,
     GameDetailComponent,
     GameUpdateComponent,
     GameDeletePopupComponent,
     GameDeleteDialogComponent,
     gameRoute,
-    gamePopupRoute,
-    GameResolve
+    gamePopupRoute
 } from './';
 
 const ENTITY_STATES = [...gameRoute, ...gamePopupRoute];
@@ -20,7 +18,6 @@ const ENTITY_STATES = [...gameRoute, ...gamePopupRoute];
     imports: [HockeyMatchSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [GameComponent, GameDetailComponent, GameUpdateComponent, GameDeleteDialogComponent, GameDeletePopupComponent],
     entryComponents: [GameComponent, GameUpdateComponent, GameDeleteDialogComponent, GameDeletePopupComponent],
-    providers: [GameService, GameResolve],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HockeyMatchGameModule {}

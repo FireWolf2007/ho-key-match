@@ -14,8 +14,7 @@ describe('Component Tests', () => {
             async(() => {
                 TestBed.configureTestingModule({
                     imports: [HockeyMatchTestModule],
-                    declarations: [JhiHealthCheckComponent],
-                    providers: [JhiHealthService]
+                    declarations: [JhiHealthCheckComponent]
                 })
                     .overrideTemplate(JhiHealthCheckComponent, '')
                     .compileComponents();

@@ -1,49 +1,49 @@
-import { element, by } from 'protractor';
+import { element, by, promise, ElementFinder } from 'protractor';
 
 export class TeamComponentsPage {
-    createButton = element(by.css('#jh-create-entity'));
+    createButton = element(by.id('jh-create-entity'));
     title = element.all(by.css('jhi-team div h2#page-heading span')).first();
 
-    clickOnCreateButton() {
+    clickOnCreateButton(): promise.Promise<void> {
         return this.createButton.click();
     }
 
-    getTitle() {
+    getTitle(): any {
         return this.title.getAttribute('jhiTranslate');
     }
 }
 
 export class TeamUpdatePage {
-    PageTitle = element(by.css('h2#jhi-team-heading'));
-    saveButton = element(by.css('#save-entity'));
-    cancelButton = element(by.css('#cancel-save'));
-    nameInput = element(by.css('input#field_name'));
-    userSelect = element(by.css('select#field_user'));
+    pageTitle = element(by.id('jhi-team-heading'));
+    saveButton = element(by.id('save-entity'));
+    cancelButton = element(by.id('cancel-save'));
+    nameInput = element(by.id('field_name'));
+    userSelect = element(by.id('field_user'));
 
     getPageTitle() {
-        return this.PageTitle.getAttribute('jhiTranslate');
+        return this.pageTitle.getAttribute('jhiTranslate');
     }
 
-    setNameInput(name) {
-        this.nameInput.sendKeys(name);
+    setNameInput(name): promise.Promise<void> {
+        return this.nameInput.sendKeys(name);
     }
 
     getNameInput() {
         return this.nameInput.getAttribute('value');
     }
 
-    userSelectLastOption() {
-        this.userSelect
+    userSelectLastOption(): promise.Promise<void> {
+        return this.userSelect
             .all(by.tagName('option'))
             .last()
             .click();
     }
 
-    userSelectOption(option) {
-        this.userSelect.sendKeys(option);
+    userSelectOption(option): promise.Promise<void> {
+        return this.userSelect.sendKeys(option);
     }
 
-    getUserSelect() {
+    getUserSelect(): ElementFinder {
         return this.userSelect;
     }
 
@@ -51,15 +51,15 @@ export class TeamUpdatePage {
         return this.userSelect.element(by.css('option:checked')).getText();
     }
 
-    save() {
-        this.saveButton.click();
+    save(): promise.Promise<void> {
+        return this.saveButton.click();
     }
 
-    cancel() {
-        this.cancelButton.click();
+    cancel(): promise.Promise<void> {
+        return this.cancelButton.click();
     }
 
-    getSaveButton() {
+    getSaveButton(): ElementFinder {
         return this.saveButton;
     }
 }

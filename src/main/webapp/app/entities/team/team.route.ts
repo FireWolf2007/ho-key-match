@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
-import { JhiPaginationUtil } from 'ng-jhipster';
+import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
 
 import { UserRouteAccessService } from 'app/core';
 import { Team } from 'app/shared/model/team.model';
@@ -10,22 +10,7 @@ import { TeamDetailComponent } from './team-detail.component';
 import { TeamUpdateComponent } from './team-update.component';
 import { TeamDeletePopupComponent } from './team-delete-dialog.component';
 
-@Injectable()
-export class TeamResolvePagingParams implements Resolve<any> {
-    constructor(private paginationUtil: JhiPaginationUtil) {}
-
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const page = route.queryParams['page'] ? route.queryParams['page'] : '1';
-        const sort = route.queryParams['sort'] ? route.queryParams['sort'] : 'id,asc';
-        return {
-            page: this.paginationUtil.parsePage(page),
-            predicate: this.paginationUtil.parsePredicate(sort),
-            ascending: this.paginationUtil.parseAscending(sort)
-        };
-    }
-}
-
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TeamResolve implements Resolve<any> {
     constructor(private service: TeamService) {}
 
@@ -43,10 +28,11 @@ export const teamRoute: Routes = [
         path: 'team',
         component: TeamComponent,
         resolve: {
-            pagingParams: TeamResolvePagingParams
+            pagingParams: JhiResolvePagingParams
         },
         data: {
             authorities: ['ROLE_USER'],
+            defaultSort: 'id,asc',
             pageTitle: 'hockeyMatchApp.team.home.title'
         },
         canActivate: [UserRouteAccessService]

@@ -1,14 +1,12 @@
 /* tslint:disable max-line-length */
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 
 import { HockeyMatchTestModule } from '../../../test.module';
 import { TeamUpdateComponent } from 'app/entities/team/team-update.component';
 import { TeamService } from 'app/entities/team/team.service';
 import { Team } from 'app/shared/model/team.model';
-
-import { UserService } from 'app/core';
 
 describe('Component Tests', () => {
     describe('Team Management Update Component', () => {
@@ -19,8 +17,7 @@ describe('Component Tests', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [HockeyMatchTestModule],
-                declarations: [TeamUpdateComponent],
-                providers: [UserService, TeamService]
+                declarations: [TeamUpdateComponent]
             })
                 .overrideTemplate(TeamUpdateComponent, '')
                 .compileComponents();
@@ -36,7 +33,7 @@ describe('Component Tests', () => {
                 fakeAsync(() => {
                     // GIVEN
                     const entity = new Team(123);
-                    spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({ body: entity })));
+                    spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
                     comp.team = entity;
                     // WHEN
                     comp.save();
@@ -53,7 +50,7 @@ describe('Component Tests', () => {
                 fakeAsync(() => {
                     // GIVEN
                     const entity = new Team();
-                    spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({ body: entity })));
+                    spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
                     comp.team = entity;
                     // WHEN
                     comp.save();

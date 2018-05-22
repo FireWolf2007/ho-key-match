@@ -5,7 +5,6 @@ import { HockeyMatchSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent
 @NgModule({
     imports: [HockeyMatchSharedLibsModule],
     declarations: [FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent],
-    providers: [],
     exports: [HockeyMatchSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent]
 })
 export class HockeyMatchSharedCommonModule {}

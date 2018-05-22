@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="hockeyMatchApp.team.home.title">Teams</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-team" [routerLink]="['/team/new']">
-            <span class="fas fa-plus"></span>
+            <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="hockeyMatchApp.team.home.createLabel">
             Create new Team
             </span>
@@ -14,9 +14,9 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fas fa-sort"></span></th>
-            <th jhiSortBy="name"><span jhiTranslate="hockeyMatchApp.team.name">Name</span> <span class="fas fa-sort"></span></th>
-            <th jhiSortBy="userLogin"><span jhiTranslate="hockeyMatchApp.team.user">User</span> <span class="fas fa-sort"></span></th>
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="hockeyMatchApp.team.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userLogin"><span jhiTranslate="hockeyMatchApp.team.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -32,13 +32,13 @@
                         <button type="submit"
                                 [routerLink]="['/team', team.id, 'view' ]"
                                 class="btn btn-info btn-sm">
-                            <span class="fas fa-eye"></span>
+                            <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/team', team.id, 'edit']"
                                 class="btn btn-primary btn-sm">
-                            <span class="fas fa-pencil-alt"></span>
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
@@ -46,7 +46,7 @@
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
-                            <span class="fas fa-times"></span>
+                            <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
                     </div>

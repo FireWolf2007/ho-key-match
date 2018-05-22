@@ -123,15 +123,12 @@ public class GameResourceIntTest {
         em.flush();
         game.setTournament(tournament);
         // Add required entity
-        Team team1 = TeamResourceIntTest.createEntity(em);
-        em.persist(team1);
+        Team team = TeamResourceIntTest.createEntity(em);
+        em.persist(team);
         em.flush();
-        game.setTeam1(team1);
+        game.setTeam1(team);
         // Add required entity
-        Team team2 = TeamResourceIntTest.createEntity(em);
-        em.persist(team2);
-        em.flush();
-        game.setTeam2(team2);
+        game.setTeam2(team);
         return game;
     }
 

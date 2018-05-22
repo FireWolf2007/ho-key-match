@@ -13,8 +13,7 @@ describe('Service Tests', () => {
 
         beforeEach(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [GameService]
+                imports: [HttpClientTestingModule]
             });
             injector = getTestBed();
             service = injector.get(GameService);

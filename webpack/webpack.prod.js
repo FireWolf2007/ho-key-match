@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const Visualizer = require('webpack-visualizer-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
@@ -87,6 +88,12 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     },
     plugins: [
         extractCSS,
+        new MomentLocalesPlugin({
+            localesToKeep: [
+                    'ru'
+                    // jhipster-needle-i18n-language-moment-webpack - JHipster will add/remove languages in this array
+                ]
+        }),
         new Visualizer({
             // Webpack statistics in target folder
             filename: '../stats.html'

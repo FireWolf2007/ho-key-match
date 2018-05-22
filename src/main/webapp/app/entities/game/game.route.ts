@@ -9,7 +9,7 @@ import { GameDetailComponent } from './game-detail.component';
 import { GameUpdateComponent } from './game-update.component';
 import { GameDeletePopupComponent } from './game-delete-dialog.component';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class GameResolve implements Resolve<any> {
     constructor(private service: GameService) {}
 

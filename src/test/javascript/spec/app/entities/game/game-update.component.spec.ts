@@ -1,15 +1,12 @@
 /* tslint:disable max-line-length */
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 
 import { HockeyMatchTestModule } from '../../../test.module';
 import { GameUpdateComponent } from 'app/entities/game/game-update.component';
 import { GameService } from 'app/entities/game/game.service';
 import { Game } from 'app/shared/model/game.model';
-
-import { TournamentService } from 'app/entities/tournament';
-import { TeamService } from 'app/entities/team';
 
 describe('Component Tests', () => {
     describe('Game Management Update Component', () => {
@@ -20,8 +17,7 @@ describe('Component Tests', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [HockeyMatchTestModule],
-                declarations: [GameUpdateComponent],
-                providers: [TournamentService, TeamService, GameService]
+                declarations: [GameUpdateComponent]
             })
                 .overrideTemplate(GameUpdateComponent, '')
                 .compileComponents();
@@ -37,7 +33,7 @@ describe('Component Tests', () => {
                 fakeAsync(() => {
                     // GIVEN
                     const entity = new Game(123);
-                    spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({ body: entity })));
+                    spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
                     comp.game = entity;
                     // WHEN
                     comp.save();
@@ -54,7 +50,7 @@ describe('Component Tests', () => {
                 fakeAsync(() => {
                     // GIVEN
                     const entity = new Game();
-                    spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({ body: entity })));
+                    spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
                     comp.game = entity;
                     // WHEN
                     comp.save();

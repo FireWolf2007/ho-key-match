@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
@@ -9,7 +9,7 @@ import { ITournament } from 'app/shared/model/tournament.model';
 type EntityResponseType = HttpResponse<ITournament>;
 type EntityArrayResponseType = HttpResponse<ITournament[]>;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TournamentService {
     private resourceUrl = SERVER_API_URL + 'api/tournaments';
 
