@@ -1,11 +1,12 @@
 package ru.wolfa.demo.hockey.match.repository;
 
 import ru.wolfa.demo.hockey.match.domain.Game;
-import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.Repository;
+
 
 /**
- * Spring Data JPA repository for the Game entity.
+ * Spring Data  repository for the Game entity.
  */
 @SuppressWarnings("unused")
 @Repository

@@ -1,12 +1,13 @@
 package ru.wolfa.demo.hockey.match.repository;
 
 import ru.wolfa.demo.hockey.match.domain.Team;
-import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
- * Spring Data JPA repository for the Team entity.
+ * Spring Data  repository for the Team entity.
  */
 @SuppressWarnings("unused")
 @Repository

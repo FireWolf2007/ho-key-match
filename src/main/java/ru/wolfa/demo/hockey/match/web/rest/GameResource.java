@@ -53,7 +53,7 @@ public class GameResource {
         log.debug("REST request to save Game : {}", gameDTO);
         if (gameDTO.getId() != null) {
             throw new BadRequestAlertException("A new game cannot already have an ID", ENTITY_NAME, "idexists");
-        }        
+        }
         GameDTO result = gameService.save(gameDTO);
         return ResponseEntity.created(new URI("/api/games/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -75,7 +75,7 @@ public class GameResource {
         log.debug("REST request to update Game : {}", gameDTO);
         if (gameDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }        
+        }
         GameDTO result = gameService.save(gameDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, gameDTO.getId().toString()))

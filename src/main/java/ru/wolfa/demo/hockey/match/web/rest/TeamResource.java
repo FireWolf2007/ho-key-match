@@ -53,7 +53,7 @@ public class TeamResource {
         log.debug("REST request to save Team : {}", teamDTO);
         if (teamDTO.getId() != null) {
             throw new BadRequestAlertException("A new team cannot already have an ID", ENTITY_NAME, "idexists");
-        }        
+        }
         TeamDTO result = teamService.save(teamDTO);
         return ResponseEntity.created(new URI("/api/teams/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -75,7 +75,7 @@ public class TeamResource {
         log.debug("REST request to update Team : {}", teamDTO);
         if (teamDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }        
+        }
         TeamDTO result = teamService.save(teamDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, teamDTO.getId().toString()))

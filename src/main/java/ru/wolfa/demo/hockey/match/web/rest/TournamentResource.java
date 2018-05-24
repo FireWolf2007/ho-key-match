@@ -52,7 +52,7 @@ public class TournamentResource {
         log.debug("REST request to save Tournament : {}", tournamentDTO);
         if (tournamentDTO.getId() != null) {
             throw new BadRequestAlertException("A new tournament cannot already have an ID", ENTITY_NAME, "idexists");
-        }        
+        }
         TournamentDTO result = tournamentService.save(tournamentDTO);
         return ResponseEntity.created(new URI("/api/tournaments/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -74,7 +74,7 @@ public class TournamentResource {
         log.debug("REST request to update Tournament : {}", tournamentDTO);
         if (tournamentDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }        
+        }
         TournamentDTO result = tournamentService.save(tournamentDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, tournamentDTO.getId().toString()))

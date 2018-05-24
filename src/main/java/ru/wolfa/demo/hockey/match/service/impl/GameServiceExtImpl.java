@@ -66,11 +66,11 @@ public class GameServiceExtImpl extends GameServiceImpl {
             }
             if (gameDTO.getResultTeam1().intValue() > gameDTO.getResultTeam2().intValue()) {
                 if (gameDTO.getGoalsTeam1().intValue() < gameDTO.getGoalsTeam2().intValue()) {
-                    throw new BadRequestAlertException("Results incorrect: gaols by team1 > goals by team2","GameDTO", "game.goals.and.result.conflict");
+                    throw new BadRequestAlertException("Results incorrect: goals by team1 > goals by team2","GameDTO", "game.goals.and.result.conflict");
                 }
             } else {
                 if (gameDTO.getGoalsTeam1().intValue() > gameDTO.getGoalsTeam2().intValue()) {
-                    throw new BadRequestAlertException("Results incorrect: gaols by team1 < goals by team2","GameDTO", "game.goals.and.result.conflict");
+                    throw new BadRequestAlertException("Results incorrect: goals by team1 < goals by team2","GameDTO", "game.goals.and.result.conflict");
                 }
             }
         }
